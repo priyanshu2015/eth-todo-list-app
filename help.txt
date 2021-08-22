@@ -1,0 +1,76 @@
+To Do App using Ethereum Smart Contract and Solidity
+
+clientside apps talking to blockchain network
+blockchain is peer to peer network of nodes that all talk to one another, distributed network.
+
+All code is written in smart contract. All the business logic.
+
+Smart Contract -> Blockchain programs, written in solidity, immutable, like a microservice on the web. 
+Write logic in smart contract, deploy it to the blockchain, it will connect to the blockchain network with our personal account with an etherium wallet in our browser.
+
+Tools Used - 
+1. NodeJS
+
+Blockchain Developer Toolkit - 
+1. Personal Blockchain. ex- ganache
+What is personal blockchain - It is like real blockchain network that's connected to the public where anyone can connect to it but it runs on our computer. It's like a closed network. Ganache is a process that runs on a computer that spins up this blockchain and runs on a server. We can use this to develop smart contracts, we can run tests against it, we can run scripts against the network, actually talk to this blockchain.
+
+2. Truffle framework(npm package) - to develop ethereum smart contract with the solidity programming language
+truffle is a suite of tools that allows us to develop smart contracts, write tests against smart contracts, deploy smart contracts to the blockchain, gives us development console, also allows us to develop client-side applications
+
+3. Metamask extension for google chrome - We need a special browser extension in order to connect to the blockchain network. It allows us to connect to the blockchain with our personal account and actually interact with the smart contract that we develop.
+
+
+Commands - 
+1. truffle version -> to check the version of truffle
+Truffle v5.4.6 (core: 5.4.6)
+Solidity v0.5.16 (solc-js)
+Node v12.18.3
+Web3.js v1.5.1
+
+2. truffle init
+
+3. tuffle migrate -> to deploy smart contract to blockchain
+It costs ether, it costs gas. (gas fee)
+truffle by default uses the first account inside the wallet of ganache to pay that gas fees.
+
+4. truffle console -> to retieve the smart contract from blockchain
+
+Inside console -> 
+    1. todoList = await TodoList.deployed() //TodoList is contract name
+
+    2. todoList.address -> contract address
+
+    3. taskCount = await todoList.taskCount() -> to see the count of tasks in a contract
+
+    4. taskCount.toNumber()
+
+10. truffle compile -> to see everything is fine or not in code
+
+11. truffle migrate --reset -> to deploy a new copy of smart contract if you already have one deployed
+
+We must interact with the blockchain in an asynchronous fashion. Thats why await. There are lot of ways to handle asynchronous actions like using promises, etc.
+With truggle version 5, we been able to use the async await pattern inside the console.
+
+contract address
+sender address
+count of tasks that we created in the smart contract
+
+How to add tasks?
+1. List tasks in the smart contract
+2. List tasks in the console
+3. List tasks in the client side application
+4. List tasks in the test
+
+
+More about Solidity -> It is a statically typed language, uint datatype -> unsigned integer(an integer that can't be negative)
+
+We have to store the states in a contract over blockchain storage.
+How do we access the storage?
+
+
+Client side application ->
+src/
+    app.js
+    index.html
+bs-config.json -> browser sync configuration which we use as a part of light server{we will use a light server npm package to run our client side application. We need to configure the server to know about few directories in our project i.e. src directory, smart contract json file location, node-modules to pull out some dependencies for building out the front-end}
